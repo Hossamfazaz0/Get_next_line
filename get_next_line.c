@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:00:17 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/01/09 16:18:09 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/02/19 16:22:20 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_line(int fd, char *str)
 	int		i;
 
 	i = 1;
-	tmp = malloc((size_t)BUFFER_SIZE + 1);
+	tmp = malloc(BUFFER_SIZE + 1);
 	if (!tmp)
 	{
 		return (NULL);
@@ -102,7 +102,8 @@ char	*get_next_line(int fd)
 	static char	*str;
 	char		*line;
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd > FOPEN_MAX
+		|| BUFFER_SIZE >= 2147483647)
 		return (NULL);
 	str = get_line(fd, str);
 	if (!str)
@@ -111,15 +112,14 @@ char	*get_next_line(int fd)
 	str = get_next(str);
 	return (line);
 }
-// int main(void)
-// {
-//     int fd = open("file.txt",O_RDONLY);
-//     // int fd2 = open("get_next_line.c",O_RDONLY);
-//     char *line;
-//     while ((line = get_next_line(fd)) != NULL)
-//     {
-//         printf("%s", line);
-//         // line = get_next_line_bonus(fd2);
-//         // printf("%s", line);
-//     }
-//     }
+int main()
+{
+	char *line;
+	int fd = open("line.txt",O_RDONLY);
+	while((line=get_next_line(fd)))
+	{
+		printf("%s",line);
+		
+	}
+	
+}
