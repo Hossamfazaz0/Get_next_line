@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:00:17 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/02/19 16:22:20 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/02/19 16:42:12 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*get_line(int fd, char *str)
 char	*read_line(char *str)
 {
 	char	*p;
-	long	i;
+	int		i;
 
 	i = 0;
 	if (!str[0])
@@ -111,15 +111,4 @@ char	*get_next_line(int fd)
 	line = read_line(str);
 	str = get_next(str);
 	return (line);
-}
-int main()
-{
-	char *line;
-	int fd = open("line.txt",O_RDONLY);
-	while((line=get_next_line(fd)))
-	{
-		printf("%s",line);
-		
-	}
-	
 }

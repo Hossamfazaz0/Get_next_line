@@ -6,7 +6,7 @@
 /*   By: hfazaz <hfazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 22:00:06 by hfazaz            #+#    #+#             */
-/*   Updated: 2024/02/19 16:13:39 by hfazaz           ###   ########.fr       */
+/*   Updated: 2024/02/19 16:39:17 by hfazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*get_line(int fd, char *str)
 char	*read_line(char *str)
 {
 	char	*p;
-	long	i;
+	int		i;
 
 	i = 0;
 	if (!str[0])
